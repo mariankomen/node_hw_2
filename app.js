@@ -48,7 +48,8 @@ app.post('/register', (req,res) => {
 
 app.get('/Users/:user_id', (req, res) => {
     const userID = Users.find( user => +req.params.user_id === user.user_id);
-    res.json(userID);
+    // res.json(userID);
+    userID ? res.json(userID) : res.status(404).end('Polzovatel ne naiden.');
 });
 
 app.post('/login', (req,res) => {
