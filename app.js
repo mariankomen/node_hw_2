@@ -53,17 +53,11 @@ app.get('/Users/:user_id', (req, res) => {
 
 app.post('/login', (req,res) => {
     const login = req.body;
-    // for(let i =0; i<Users.length;i++){
-    //     if (Users.UserLogin === login.name && Users.UserPassword === login.password) {
-    //         res.redirect(`/Users/${Users.user_id}`);
-    //         console.log("Enter successfull.")
-    //     } else {
-    //         console.log('Enter failed.');
-    //         res.redirect('/login');
-    //     }
-    // };
-    const Entering = Users.find(smth => smth.name === login.UserLogin && smth.password === login.UserPassword);
-    res.redirect(`/Users/${Entering.user_id}`);
+
+    // const Entering = Users.find(smth => smth.name === login.UserLogin && smth.password === login.UserPassword);
+    // res.redirect(`/Users/${Entering.user_id}`);
+    const Entering = Users.find(smth => smth.name === login.UserLogin && smth.password === login.password);
+    Entering ? res.redirect(`/User/${Entering.user_id}`) : res.status(404).end('Undefined User. Try again');
 });
 
 
